@@ -36,8 +36,28 @@ class mojWatek implements Runnable
 public class Main {
     public static void main(String[] args)
     {
+        System.out.println("Glowny watek startuje.");
 
+        //Tworzenie i poczatek wykonywaia trzech watkow
+        mojWatek mw1 = new mojWatek("watek 1");
+        mojWatek mw2 = new mojWatek("watek 2");
+        mojWatek mw3 = new mojWatek("watek 3");
 
-        
+        try
+        {
+            //oczekiwanie dopoki nie zakoncza sie okreslone watki
+            mw1.wtk.join();
+            System.out.println("Watek 1 dolaczyl");
+            mw2.wtk.join();
+            System.out.println("Watek 2 dolaczyl");
+            mw3.wtk.join();
+            System.out.println("Watek 3 dolaczyl");
+        }
+        catch(InterruptedException exc)
+        {
+            System.out.println("Glowny watek zostal przerwany.");
+        }
+
+        System.out.println("Glowny watek zostal zakonczony.");
     }
 }
